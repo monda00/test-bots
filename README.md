@@ -1,10 +1,23 @@
-﻿# welcome users
+# CoreBot
 
-Bot Framework v4 welcome users bot sample
+Bot Framework v4 core bot sample.
 
-This bot has been created using [Bot Framework](https://dev.botframework.com), is shows how to welcome users when they join the conversation.
+This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to:
+
+- Use [LUIS](https://www.luis.ai) to implement core AI capabilities
+- Implement a multi-turn conversation using Dialogs
+- Handle user interruptions for such things as `Help` or `Cancel`
+- Prompt for and validate requests for information from the user
 
 ## Prerequisites
+
+This sample **requires** prerequisites in order to run.
+
+### Overview
+
+This bot uses [LUIS](https://www.luis.ai), an AI based cognitive service, to implement language understanding.
+
+### Install .NET Core CLI
 
 - [.NET Core SDK](https://dotnet.microsoft.com/download) version 2.1
 
@@ -13,15 +26,27 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
   dotnet --version
   ```
 
+### Create a LUIS Application to enable language understanding
+
+The LUIS model for this example can be found under `CognitiveModels/FlightBooking.json` and the LUIS language model setup, training, and application configuration steps can be found [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=cs).
+
+Once you created the LUIS model, update `appsettings.json` with your `LuisAppId`, `LuisAPIKey` and `LuisAPIHostName`.
+
+```json
+  "LuisAppId": "Your LUIS App Id",
+  "LuisAPIKey": "Your LUIS Subscription key here",
+  "LuisAPIHostName": "Your LUIS App region here (i.e: westus.api.cognitive.microsoft.com)"
+```
+
 ## To try this sample
 
 - Clone the repository
 
     ```bash
-    git clone https://github.com/Microsoft/botbuilder-samples.git
+    git clone https://github.com/microsoft/botbuilder-samples.git
     ```
 
-- In a terminal, navigate to `samples/csharp_dotnetcore/03.welcome-user`
+- In a terminal, navigate to `samples/csharp_dotnetcore/13.core-bot`
 - Run the bot from a terminal or from Visual Studio, choose option A or B.
 
   A) From a terminal
@@ -35,8 +60,8 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
 
   - Launch Visual Studio
   - File -> Open -> Project/Solution
-  - Navigate to `samples/csharp_dotnetcore/03.welcome-user` folder
-  - Select `WelcomeUser.csproj` file
+  - Navigate to `samples/csharp_dotnetcore/13.core-bot` folder
+  - Select `CoreBot.csproj` file
   - Press `F5` to run the project
 
 ## Testing the bot using Bot Framework Emulator
@@ -51,10 +76,6 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
 - File -> Open Bot
 - Enter a Bot URL of `http://localhost:3978/api/messages`
 
-## Welcoming Users
-
-The primary goal when creating any bot is to engage your user in a meaningful conversation. One of the best ways to achieve this goal is to ensure that from the moment a user first connects, they understand your bot’s main purpose and capabilities, the reason your bot was created. See [Send welcome message to users](https://aka.ms/botframework-welcome-instructions) for additional information on how a bot can welcome uers to a conversation.
-
 ## Deploy the bot to Azure
 
 To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](https://aka.ms/azuredeployment) for a complete list of deployment instructions.
@@ -63,6 +84,8 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
 
 - [Bot Framework Documentation](https://docs.botframework.com)
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
+- [Dialogs](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)
+- [Gathering Input Using Prompts](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-prompts?view=azure-bot-service-4.0&tabs=csharp)
 - [Activity processing](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
 - [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 - [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
